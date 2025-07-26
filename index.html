@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Empresa Demp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Esperamos a que todo el contenido del DOM esté completamente cargado
+      document.addEventListener("DOMContentLoaded", function () {
+        // Índice del slide actual
+        let index = 0;
+
+        // Seleccionamos todos los elementos con la clase 'carousel-slide' (todas las imágenes del carrusel)
+        const slides = document.querySelectorAll(".carousel-slide");
+
+        // Obtenemos el número total de slides
+        const total = slides.length;
+
+        // Función para mostrar un slide específico según el índice
+        function showSlide(i) {
+          slides.forEach((slide, idx) => {
+            // Si el índice del slide no es el actual, lo ocultamos con 'hidden'
+            slide.classList.toggle("hidden", idx !== i);
+          });
+        }
+
+        // Función para ir al siguiente slide
+        function nextSlide() {
+          index = (index + 1) % total; // Avanza al siguiente índice y regresa al inicio si es el último
+          showSlide(index); // Muestra el nuevo slide
+        }
+
+        // Función para ir al slide anterior
+        function prevSlide() {
+          index = (index - 1 + total) % total; // Retrocede al slide anterior (ciclo inverso)
+          showSlide(index); // Muestra el nuevo slide
+        }
+
+        // Asigna evento al botón "siguiente"
+        document.getElementById("nextBtn").addEventListener("click", nextSlide);
+
+        // Asigna evento al botón "anterior"
+        document.getElementById("prevBtn").addEventListener("click", prevSlide);
+
+        // Muestra el slide inicial (índice 0)
+        showSlide(index);
+
+        // Configura el avance automático cada 5 segundos (5000 ms)
+        setInterval(nextSlide, 10000);
+      });
+    </script>
+  </head>
+
+  <body class="font-sans bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+      <div
+        class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between"
+      >
+        <div class="flex items-center space-x-4">
+          <img
+            src="/img/logo-demo.jpg"
+            alt="Logo"
+            class="h-13 w-12"
+          />
+          <span class="text-xl font-bold">Empresa DEMO</span>
+        </div>
+        <nav>
+          <ul class="flex space-x-6 text-gray-700">
+            <li><a href="#" class="hover:text-blue-600">Inicio</a></li>
+            <li><a href="#" class="hover:text-blue-600">Servicios</a></li>
+            <li><a href="#" class="hover:text-blue-600">Nosotros</a></li>
+            <li><a href="#" class="hover:text-blue-600">Blog</a></li>
+            <li><a href="#" class="hover:text-blue-600">Contacto</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-8 grid lg:grid-cols-4 gap-6">
+      <!-- Carrusel -->
+      <section class="lg:col-span-3">
+        <div class="relative overflow-hidden rounded-lg shadow-md h-[40%]">
+          <div class="carousel-slide">
+            <img
+              src="/img/img1.JPG"
+              alt="Carrusel 1"
+              class="w-full h-auto"
+            />
+          </div>
+          <div class="carousel-slide hidden">
+            <img
+              src="/img/img2.JPG"
+              alt="Carrusel 2"
+              class="w-full   h-auto"
+            />
+          </div>
+          <div class="carousel-slide hidden">
+            <img
+              src="/img/img3.jpg"
+              alt="Carrusel 3"
+              class="w-full  h-auto"
+            />
+          </div>
+
+          <!-- Botones -->
+          <button
+            id="prevBtn"
+            class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-2 py-1 rounded-full"
+          >
+            &#10094;
+          </button>
+          <button
+            id="nextBtn"
+            class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-2 py-1 rounded-full"
+          >
+            &#10095;
+          </button>
+        </div>
+
+        <!-- Cards -->
+        <div class="grid md:grid-cols-3 gap-6 mt-8">
+          <div class="bg-white p-4 rounded shadow">
+            <img
+              src="/img/card1.jpg"
+              alt="Card 1"
+              class="rounded mb-2"
+            />
+            <h3 class="text-lg font-semibold mb-2">Título 1</h3>
+            <p class="text-sm text-gray-600 mb-4">
+              Descripción breve del contenido.
+            </p>
+            <div class="flex space-x-4 text-blue-600">
+              <div class="text-center">
+                <svg
+                  class="w-6 h-6 mx-auto"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M5 13l4 4L19 7" />
+                </svg>
+                <p class="text-xs">Icono 1</p>
+              </div>
+              <div class="text-center">
+                <svg
+                  class="w-6 h-6 mx-auto"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M5 13l4 4L19 7" />
+                </svg>
+                <p class="text-xs">Icono 2</p>
+              </div>
+              <div class="text-center">
+                <svg
+                  class="w-6 h-6 mx-auto"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M5 13l4 4L19 7" />
+                </svg>
+                <p class="text-xs">Icono 3</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded shadow">
+            <img
+              src="/img/card2.jpg"
+              alt="Card 2"
+              class="rounded mb-2"
+            />
+            <h3 class="text-lg font-semibold mb-2">Título 2</h3>
+            <p class="text-sm text-gray-600 mb-4">
+              Otra descripción breve del contenido.
+            </p>
+            <div class="flex space-x-4 text-blue-600">
+              <div class="text-center">
+                <svg
+                  class="w-6 h-6 mx-auto"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M5 13l4 4L19 7" />
+                </svg>
+                <p class="text-xs">Icono A</p>
+              </div>
+              <div class="text-center">
+                <svg
+                  class="w-6 h-6 mx-auto"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M5 13l4 4L19 7" />
+                </svg>
+                <p class="text-xs">Icono B</p>
+              </div>
+              <div class="text-center">
+                <svg
+                  class="w-6 h-6 mx-auto"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M5 13l4 4L19 7" />
+                </svg>
+                <p class="text-xs">Icono C</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white p-4 rounded shadow">
+            <img
+              src="/img/card3.jpg"
+              alt="Card 1"
+              class="rounded mb-2"
+            />
+            <h3 class="text-lg font-semibold mb-2">Título 3</h3>
+            <p class="text-sm text-gray-600 mb-4">
+              Descripción breve del contenido.
+            </p>
+            <div class="flex space-x-4 text-blue-600">
+              <div class="text-center">
+                <svg
+                  class="w-6 h-6 mx-auto"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M5 13l4 4L19 7" />
+                </svg>
+                <p class="text-xs">Icono 1</p>
+              </div>
+              <div class="text-center">
+                <svg
+                  class="w-6 h-6 mx-auto"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M5 13l4 4L19 7" />
+                </svg>
+                <p class="text-xs">Icono 2</p>
+              </div>
+              <div class="text-center">
+                <svg
+                  class="w-6 h-6 mx-auto"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M5 13l4 4L19 7" />
+                </svg>
+                <p class="text-xs">Icono 3</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Aside -->
+      <aside class="lg:col-span-1 space-y-4">
+        <div class="bg-white p-4 rounded shadow">
+          <h4 class="font-semibold mb-2">Noticia 1</h4>
+          <p class="text-sm text-gray-600">Texto corto relevante.</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+          <h4 class="font-semibold mb-2">Noticia 2</h4>
+          <p class="text-sm text-gray-600">Texto corto relevante.</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+          <h4 class="font-semibold mb-2">Noticia 3</h4>
+          <p class="text-sm text-gray-600">Texto corto relevante.</p>
+        </div>
+      </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-200 mt-12">
+      <div class="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-4 gap-6">
+        <!-- Redes sociales -->
+        <div>
+          <h5 class="font-semibold mb-4">Síguenos</h5>
+          <div class="flex space-x-4">
+            <a href="#" class="hover:text-white"
+              ><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M22 4.01..." /></svg
+            ></a>
+            <a href="#" class="hover:text-white"
+              ><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18.23 5.01..." /></svg
+            ></a>
+            <a href="#" class="hover:text-white"
+              ><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.04..." /></svg
+            ></a>
+            <a href="#" class="hover:text-white"
+              ><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M10.9 2.3..." /></svg
+            ></a>
+          </div>
+        </div>
+
+        <!-- Menús -->
+        <div>
+          <h5 class="font-semibold mb-4">Empresa</h5>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-white">Sobre nosotros</a></li>
+            <li><a href="#" class="hover:text-white">Equipo</a></li>
+            <li><a href="#" class="hover:text-white">Carreras</a></li>
+            <li><a href="#" class="hover:text-white">Prensa</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-semibold mb-4">Servicios</h5>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-white">Consultoría</a></li>
+            <li><a href="#" class="hover:text-white">Soporte</a></li>
+            <li><a href="#" class="hover:text-white">Desarrollo</a></li>
+            <li><a href="#" class="hover:text-white">Diseño</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-semibold mb-4">Contacto</h5>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="hover:text-white">Email</a></li>
+            <li><a href="#" class="hover:text-white">Teléfono</a></li>
+            <li><a href="#" class="hover:text-white">Ubicación</a></li>
+            <li><a href="#" class="hover:text-white">Soporte</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="text-center py-4 border-t border-gray-700 text-sm">
+        &copy; 2025 Krypton Logic. Todos los derechos reservados.
+      </div>
+    </footer>
+  </body>
+</html>
